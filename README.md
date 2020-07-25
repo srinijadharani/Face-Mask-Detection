@@ -22,5 +22,5 @@ This Facial Mask Detector is purely based on OpenCV and Python.
   <li>Gray image mouth rectangle/li>
 </ol>
 
-![Face-Mask-Detection/truth_table.png]
+![truth_table.png]
 
