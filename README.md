@@ -28,3 +28,6 @@ This Facial Mask Detector is purely based on OpenCV and Python.
 <img src="Screenshot (36).png">
 <h4>With Mask:</h4>
 <img src="Screenshot (37).png">
+
+
+<h2>End.</h2>
