@@ -13,12 +13,12 @@ bw_threshold = 80
 
 font = cv2.FONT_HERSHEY_COMPLEX
 org = (30, 30)
-weared_mask_font_color = (0, 255, 0)
-not_weared_mask_font_color = (0, 0, 255)
+wore_mask_font_color = (0, 255, 0)
+not_wore_mask_font_color = (0, 0, 255)
 thickness = 2
 font_scale = 1
-weared_mask = "Mask: 100.0% Good Job!"
-not_weared_mask = "Mask: 0.0% Please wear mask!"
+wore_mask = "Mask: 100.0% Good Job!"
+not_wore_mask = "Mask: 0.0% Please wear mask!"
 
 cap = cv2.VideoCapture(0)
 
@@ -32,10 +32,10 @@ while True:
     faces_bw = face_cascade.detectMultiScale(black_and_white, 1.1, 4)
 
     if(len(faces) == 0 and len(faces_bw) == 0):
-        cv2.putText(img, "No face found...", org, font, font_scale, weared_mask_font_color, thickness, cv2.LINE_AA)
+        cv2.putText(img, "No face found...", org, font, font_scale, wore_mask_font_color, thickness, cv2.LINE_AA)
     elif(len(faces) == 0 and len(faces_bw) == 1):
         
-        cv2.putText(img, weared_mask, org, font, font_scale, weared_mask_font_color, thickness, cv2.LINE_AA)
+        cv2.putText(img, wore_mask, org, font, font_scale, wore_mask_font_color, thickness, cv2.LINE_AA)
     else:
         
         for (x, y, w, h) in faces:
@@ -48,13 +48,13 @@ while True:
 
         #if face is detected, but mouth is not, then the person is wearing mask.
         if(len(mouth_rects) == 0):
-            cv2.putText(img, weared_mask, org, font, font_scale, weared_mask_font_color, thickness, cv2.LINE_AA)
+            cv2.putText(img, wore_mask, org, font, font_scale, wore_mask_font_color, thickness, cv2.LINE_AA)
         else:
             for (mx, my, mw, mh) in mouth_rects:
 
                 if(y < my < y + h):
                    
-                    cv2.putText(img, not_weared_mask, org, font, font_scale, not_weared_mask_font_color, thickness, cv2.LINE_AA)
+                    cv2.putText(img, not_wore_mask, org, font, font_scale, not_wore_mask_font_color, thickness, cv2.LINE_AA)
                     break
 
     cv2.imshow('Mask Detection', img)
