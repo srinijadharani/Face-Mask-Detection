@@ -27,17 +27,9 @@ while True:
     img = cv2.flip(img,1)
     
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-    
     (thresh, black_and_white) = cv2.threshold(gray, bw_threshold, 255, cv2.THRESH_BINARY)
-    
-
-    
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
-
-    
     faces_bw = face_cascade.detectMultiScale(black_and_white, 1.1, 4)
-
 
     if(len(faces) == 0 and len(faces_bw) == 0):
         cv2.putText(img, "No face found...", org, font, font_scale, weared_mask_font_color, thickness, cv2.LINE_AA)
@@ -62,7 +54,7 @@ while True:
 
                 if(y < my < y + h):
                    
-                    cv2.putText(img, not_weared_mask, org, font, font_scale, not_weared_mask_font_color,                                                thickness, cv2.LINE_AA)
+                    cv2.putText(img, not_weared_mask, org, font, font_scale, not_weared_mask_font_color, thickness, cv2.LINE_AA)
                     break
 
     cv2.imshow('Mask Detection', img)
